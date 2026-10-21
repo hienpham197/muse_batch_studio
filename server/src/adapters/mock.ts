@@ -35,6 +35,7 @@ const ASSET_BY_RATIO: Record<Ratio, string> = { '9:16': '9x16', '16:9': '16x9', 
  * Adapter mô phỏng để phát triển và nghiệm thu mà không cần nền tảng thật.
  * Video là mẫu test pattern, KHÔNG phải kết quả AI. Có thể điều khiển bằng marker trong prompt:
  *   [lỗi] luôn lỗi · [lỗi-lần-đầu] lỗi lần chạy đầu · [treo] không báo tiến độ · [giới-hạn] báo rate limit một lần.
+ *   Có bản tiếng Anh tương đương: [fail] · [fail-first] · [hang] · [rate-limit].
  */
 export class MockAdapter implements PlatformAdapter {
   readonly name = 'mock';
@@ -99,13 +100,14 @@ export class MockAdapter implements PlatformAdapter {
     this.assertSession(session);
 
     const p = spec.prompt;
-    if (p.includes('[giới-hạn]') && !this.rateLimited.has(spec.jobId)) {
+    const has = (vi: string, en: string): boolean => p.includes(vi) || p.includes(en);
+    if (has('[giới-hạn]', '[rate-limit]') && !this.rateLimited.has(spec.jobId)) {
       this.rateLimited.add(spec.jobId);
       throw new WorkerError('rate-limit', 'RATE_LIMIT_429', 'Nền tảng báo vượt giới hạn số lần tạo.');
     }
 
-    const hang = p.includes('[treo]');
-    const failFixed = p.includes('[lỗi]') || (p.includes('[lỗi-lần-đầu]') && spec.attempt === 0);
+    const hang = has('[treo]', '[hang]');
+    const failFixed = has('[lỗi]', '[fail]') || (has('[lỗi-lần-đầu]', '[fail-first]') && spec.attempt === 0);
     const failAt = failFixed ? 40 : this.rnd() < this.opts.failRate ? 20 + Math.floor(this.rnd() * 60) : null;
 
     const totalMs = (this.opts.jobSeconds * 1000 * (0.7 + this.rnd() * 0.6)) / this.speed;

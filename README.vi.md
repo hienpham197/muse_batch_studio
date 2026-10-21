@@ -54,6 +54,8 @@ Với adapter `mock`, tài khoản nào cũng đăng nhập được, trừ mậ
 | `[treo]` | Dừng báo tiến độ, dùng để thử timeout |
 | `[giới-hạn]` | Báo rate limit một lần, dispatcher giảm nhịp rồi tự chạy tiếp |
 
+Mỗi marker có bản tiếng Anh tương đương: `[fail]`, `[fail-first]`, `[hang]`, `[rate-limit]`.
+
 ## Tạo video thật trên Muse
 
 Muse không có API công khai: khung chat đi qua WebSocket mã hóa do chính trang web xử lý. Vì vậy adapter `muse` ([server/src/adapters/muse-browser.ts](server/src/adapters/muse-browser.ts)) điều khiển một Chrome thật đã đăng nhập bằng Playwright, theo cách của dự án [Muse-Chat-MCP](https://github.com/duclm1x1/Muse-Chat-MCP) (MIT), nơi các selector được mượn. Mỗi job làm đúng các bước:

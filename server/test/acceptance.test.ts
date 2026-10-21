@@ -226,6 +226,18 @@ describe('Account Pool và dispatcher', () => {
     expect(j.error?.message).toContain('2/2');
   });
 
+  it('AC-09: marker tiếng Anh [fail] hoạt động như [lỗi]', async () => {
+    h = await makeHarness({}, { speed: 40 });
+    await h.addAccounts(1);
+    const id = (await enqueue(['[fail] always fails'])).body.taskIds[0];
+    await h.call('POST', '/api/queue/process');
+    await h.waitFor(() => {
+      h.clock.offset += 5000;
+      return job(id).status === 'failed';
+    }, 20_000);
+    expect(job(id).error?.originalCode).toBe('MOCK_GENERATION_FAILED');
+  });
+
   it('AC-09: lỗi lần đầu rồi chạy lại thành công', async () => {
     h = await makeHarness({}, { speed: 40 });
     await h.addAccounts(1);

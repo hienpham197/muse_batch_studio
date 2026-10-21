@@ -51,10 +51,10 @@ With the `mock` adapter any account logs in, except a password or cookie value s
 
 | Marker | Behaviour |
 |---|---|
-| `[lỗi]` | Always fails: retries, then ends as Failed |
-| `[lỗi-lần-đầu]` | Fails on the first run, succeeds on retry |
-| `[treo]` | Stops reporting progress, to test the timeout |
-| `[giới-hạn]` | Reports a rate limit once; the dispatcher backs off and resumes |
+| `[fail]` | Always fails: retries, then ends as Failed |
+| `[fail-first]` | Fails on the first run, succeeds on retry |
+| `[hang]` | Stops reporting progress, to test the timeout |
+| `[rate-limit]` | Reports a rate limit once; the dispatcher backs off and resumes |
 
 ## Real videos on Muse
 
