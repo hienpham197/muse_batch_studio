@@ -320,7 +320,6 @@ export function AccountPool() {
             </Button>
           </section>
         )}
-        {state?.simulated && <p className="mt-4 text-xs text-warn">{vi.header.simulated}</p>}
       </Dialog>
 
       <ConfirmDialog

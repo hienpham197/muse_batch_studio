@@ -14,7 +14,6 @@ export const vi = {
     offline: 'Offline',
     connection: 'Trạng thái kết nối',
     accounts: (online: number, total: number) => `Tài khoản · ${online}/${total} Online`,
-    simulated: 'Chế độ mô phỏng: video chỉ là mẫu test pattern, không phải kết quả AI thật. Cần gắn adapter nền tảng thật để tạo video.',
     simulatedClip: 'MÔ PHỎNG: đây là video mẫu test pattern, không phải kết quả AI thật.',
     simulatedBadge: 'MÔ PHỎNG',
     blockedNoAccount: 'Không còn tài khoản Online nào nên hàng đợi tạm dừng. Hãy bật hoặc đăng nhập lại một tài khoản trong Account Pool.',

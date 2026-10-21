@@ -62,12 +62,6 @@ export function Header() {
           {vi.header.serverDown}
         </p>
       )}
-      {state?.simulated && (
-        <p className="border-t border-warn/30 bg-warn-soft px-4 py-1.5 text-xs text-warn">
-          <strong className="font-semibold">⚠ </strong>
-          {vi.header.simulated}
-        </p>
-      )}
       {state?.dispatcherBlocked && (
         <p role="status" className="border-t border-warn/30 bg-warn-soft px-4 py-2 text-[13px] text-warn">
           {state.dispatcherBlocked === 'no-online-account' ? vi.header.blockedNoAccount : vi.header.blockedCooldown}
