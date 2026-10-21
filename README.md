@@ -6,7 +6,7 @@ A local web tool for generating AI videos in bulk. Paste a list of prompts, atta
 
 > **Two modes**
 > - `MUSE_ADAPTER=muse` generates **real** videos on [muse.ai](https://muse.ai) by driving a logged-in Chrome (see [Real videos on Muse](#real-videos-on-muse)).
-> - The default adapter, `mock`, produces ffmpeg-style test-pattern clips, not AI output. The UI always shows a **SIMULATED** (`MÔ PHỎNG`) badge on these.
+> - The default adapter, `mock`, produces ffmpeg-style test-pattern clips, not AI output. There is no global warning banner: only the clips themselves carry a **SIMULATED** (`MÔ PHỎNG`) badge. Set `MUSE_ADAPTER=muse` before `npm start` if you want real videos.
 
 > **Disclaimer.** This is an independent, unofficial project. It is not affiliated with, endorsed by, or sponsored by Meta or Muse. Automating a web app through a browser may violate that service's terms of use. Use it only with your own account and at your own risk.
 

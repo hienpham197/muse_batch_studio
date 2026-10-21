@@ -6,7 +6,7 @@ Tool web chạy trên máy bạn để tạo video AI hàng loạt: dán danh s�
 
 > **Hai chế độ**
 > - `MUSE_ADAPTER=muse` tạo video **thật** trên [muse.ai](https://muse.ai) bằng Chrome đã đăng nhập (xem [Tạo video thật trên Muse](#tạo-video-thật-trên-muse)).
-> - Adapter mặc định `mock` chỉ tạo video mẫu test pattern, không phải kết quả AI. Giao diện luôn gắn nhãn **MÔ PHỎNG** cho các video này.
+> - Adapter mặc định `mock` chỉ tạo video mẫu test pattern, không phải kết quả AI. Giao diện không có banner cảnh báo chung, chỉ riêng các video mô phỏng mới gắn nhãn **MÔ PHỎNG**. Đặt `MUSE_ADAPTER=muse` trước khi `npm start` nếu muốn tạo video thật.
 
 > **Lưu ý.** Đây là dự án độc lập, không chính thức, không liên kết hay được bảo trợ bởi Meta hoặc Muse. Tự động hóa một web app qua trình duyệt có thể trái điều khoản sử dụng của dịch vụ đó. Chỉ dùng với tài khoản của chính bạn và tự chịu trách nhiệm.
 
