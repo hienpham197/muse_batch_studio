@@ -1,0 +1,30 @@
+{
+  "name": "muse-batch-manager",
+  "private": true,
+  "license": "SEE LICENSE IN LICENSE",
+  "description": "Batch AI video generation manager with account pool, @tag reference images and a Playwright-driven Muse adapter",
+  "repository": { "type": "git", "url": "git+https://github.com/hienpham197/muse_batch_studio.git" },
+  "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "shared",
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:server dev:web",
+    "dev:server": "npm run dev -w server",
+    "dev:web": "npm run dev -w web",
+    "build": "npm run build -w web",
+    "start": "npm run start -w server",
+    "typecheck": "npm run typecheck -w shared && npm run typecheck -w server && npm run typecheck -w web",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "npm-run-all2": "^9.0.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

@@ -1,0 +1,166 @@
+@import 'tailwindcss';
+
+/*
+ * Token màu ngữ nghĩa, bảng màu sáng/tối theo hệ điều hành:
+ * paper / surface / ink / slate / line + accent "tally" hồng đỏ, ok xanh lục, warn cam.
+ * Sáng là mặc định, tối theo hệ điều hành.
+ */
+:root {
+  --bg: #eef1f5; /* paper */
+  --surface: #ffffff;
+  --surface-2: #eef1f5;
+  --border: #d7dde6; /* line */
+  --border-strong: #b9c2cf; /* line-strong */
+  --fg: #18202e; /* ink */
+  --muted: #5a6577; /* slate */
+  --accent: #e2335f; /* tally */
+  --accent-hover: #c42450; /* tally-press */
+  --accent-soft: #fce6ec; /* tally-soft */
+  --accent-fg: #ffffff; /* on-tally */
+  --accent-text: #c42450; /* chữ màu accent trên nền sáng, đủ tương phản */
+  --ok: #17885c;
+  --ok-soft: #e3f3ec;
+  --warn: #a86400;
+  --warn-soft: #fbf0de;
+  --danger: #c42450;
+  --danger-soft: #fce6ec;
+  --info: #1f5bd1;
+  --info-soft: #e1eafc;
+  --focus: #2f6feb;
+  --dot: #c5ccd8;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #10141c;
+    --surface: #171c26;
+    --surface-2: #10141c;
+    --border: #2a3240;
+    --border-strong: #3a4454;
+    --fg: #e7ebf2;
+    --muted: #97a1b3;
+    --accent: #ff4f7b;
+    --accent-hover: #e83a67;
+    --accent-soft: #3a1b26;
+    --accent-fg: #ffffff;
+    --accent-text: #ff4f7b;
+    --ok: #3cc489;
+    --ok-soft: #163327;
+    --warn: #e0a23a;
+    --warn-soft: #382a12;
+    --danger: #ff4f7b;
+    --danger-soft: #3a1b26;
+    --info: #6b9bff;
+    --info-soft: #16233f;
+    --focus: #6b9bff;
+    --dot: #2a3240;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-text: var(--accent-text);
+  --color-focus: var(--focus);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --font-sans: 'Be Vietnam Pro', ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', 'SF Mono', Consolas, monospace;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Ô nhập dùng viền line-strong; giữ viền đỏ khi không hợp lệ. */
+input:not([type='radio']):not([type='checkbox']):not([aria-invalid='true']),
+select,
+textarea:not([aria-invalid='true']) {
+  border-color: var(--border-strong);
+}
+input:not([type='radio']):not([type='checkbox']):focus,
+select:focus,
+textarea:focus {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 22%, transparent);
+}
+
+button:not(:disabled),
+[role='button'],
+select,
+summary {
+  cursor: pointer;
+}
+
+.dot-grid {
+  background-color: var(--surface-2);
+  background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.toast-in {
+  animation: toast-in 0.18s ease-out;
+}
+
+@keyframes stripe {
+  to {
+    background-position: 24px 0;
+  }
+}
+.progress-live {
+  background-image: linear-gradient(45deg, rgb(255 255 255 / 0.22) 25%, transparent 25%, transparent 50%, rgb(255 255 255 / 0.22) 50%, rgb(255 255 255 / 0.22) 75%, transparent 75%);
+  background-size: 24px 24px;
+  animation: stripe 1s linear infinite;
+}
